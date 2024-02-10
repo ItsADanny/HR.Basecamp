@@ -1,3 +1,5 @@
+__author__ = 'Danny de Snoo, HR-nr: 1091749'
+
 # pre-define the weight of the widgets and gizmos
 def_widget = 75;
 def_gizmo = 112;

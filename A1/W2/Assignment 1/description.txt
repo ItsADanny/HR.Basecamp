@@ -1,0 +1,17 @@
+Write a program that reads a date from the user and computes its immediate successor.
+
+Criteria:
+* The date will be entered in YYYY-MM-DD format.
+* Assume there is no leap year and February is always 28 days.
+* The program must print Input format ERROR. Correct Format: YYYY-MM-DD in case the user enters an incorrect input.
+  Some examples of incorrect input: 2013/12/30, 2013_12_30, 0213/12/30, 30-12-2013.
+
+Input examples:
+1. Input Date: 2013-11-18
+2. Input Date: 2013-11-30
+3. Input Date: 2013-12-31
+
+Output examples:
+4. Next Date: 2013-11-19
+5. Next Date: 2013-12-01
+6. Next Date: 2014-01-01

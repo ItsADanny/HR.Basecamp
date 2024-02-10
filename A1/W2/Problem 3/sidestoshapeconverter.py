@@ -1,3 +1,5 @@
+__author__ = 'Danny de Snoo, HR-nr: 1091749'
+
 # Request an input from the user
 input_sides = int(input("Sides: "))
 

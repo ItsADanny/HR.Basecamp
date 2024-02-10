@@ -1,3 +1,5 @@
+__author__ = 'Danny de Snoo, HR-nr: 1091749'
+
 # Define the variables required for calculation
 def_months = 12
 def_days = 365

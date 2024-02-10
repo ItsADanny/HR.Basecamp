@@ -1,3 +1,5 @@
+__author__ = 'Danny de Snoo, HR-nr: 1091749'
+
 # Pre-define the tax rates that are going to be used in the calculations
 def_taxpercentage = 0.21
 def_tippercentage = 0.15

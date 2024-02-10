@@ -1,0 +1,9 @@
+Write a program that reads an integer from the user. Then your program should display a message indicating whether the integer is even or odd.
+
+Input examples:
+1. Number: 1
+2. Number: 4
+
+Output examples:
+1. Odd
+2. Even

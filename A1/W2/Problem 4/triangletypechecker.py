@@ -1,4 +1,6 @@
-#import a function to turn a list into a array
+__author__ = 'Danny de Snoo, HR-nr: 1091749'
+
+# import a function to turn a list into a array
 from array import array
 
 # request an input from the user

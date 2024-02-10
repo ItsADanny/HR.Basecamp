@@ -1,0 +1,16 @@
+Positions on a chess board are identified by a letter and a number.
+Usually, the letter identifies the column, while the number identifies the row.
+Write a program that reads a position from the user.
+The program should determine if the column begins with a black square or a white square.
+Then use modular arithmetic (check if you know this concept) to report the color of the square in that row.
+
+Criteria:
+* Your program may assume that a valid position will always be entered
+
+Input examples:
+1. Position: D5
+2. Position: A1
+
+Output examples:
+1. White
+2. Black
