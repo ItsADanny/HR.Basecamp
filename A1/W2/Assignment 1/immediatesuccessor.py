@@ -4,7 +4,7 @@ __author__ = 'Danny de Snoo, HR-nr: 1091749'
 def_invalid_characters = ["/", "_", ".", ",", "|"]
 
 # Request an input from the user
-input_date = input("Input Date: ")
+input_date = input()
 
 # Check if the string contains any characters that are not allowed
 if any(x in input_date for x in def_invalid_characters):
@@ -29,7 +29,7 @@ else:
                 if date_month == 2:
                     # Check if February doesn't have a value greater than 28, if so give an error message
                     if int(date_day) > 28:
-                        print("Error: Correct Format: YYYY-MM-DD")
+                        print("input format ERROR. Correct Format: YYYY-MM-DD")
                     # Check if the day given is the last day of February
                     elif int(date_day) == 28:
                         # If so set the month to next month and set the day to the first day of the month
@@ -57,7 +57,7 @@ else:
                     if int(date_month) % 2:
                         # If so then the max date for that month is 30
                         if int(date_day) > 30:
-                            print("Error: Correct Format: YYYY-MM-DD")
+                            print("input format ERROR. Correct Format: YYYY-MM-DD")
                         elif int(date_day) == 30:
                             # If it's the last day of the month, add 1 to the month and
                             # set the day to the first day of the next month
@@ -83,9 +83,9 @@ else:
                             date_day += 1
                             print(f"Next Date: {date_year}-{date_month}-{date_day}")
             else:
-                print("Error: Correct Format: YYYY-MM-DD")
+                print("input format ERROR. Correct Format: YYYY-MM-DD")
         else:
-            print("Error: Correct Format: YYYY-MM-DD")
+            print("input format ERROR. Correct Format: YYYY-MM-DD")
     else:
         # If not end the program
-        print("Error: Correct Format: YYYY-MM-DD")
+        print("input format ERROR. Correct Format: YYYY-MM-DD")

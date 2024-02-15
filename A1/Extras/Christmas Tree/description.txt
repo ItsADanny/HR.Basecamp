@@ -1,0 +1,36 @@
+It's December and the city is in a Christmas mood. I have spent all my money on presents. I have no money left to buy a Christmas tree and decorate my house.
+But since I know Python programming, I can make my own Christmas tree. Look how beautiful it is!
+
+Do you think you can write the code to make one for yourself?
+
+TIPS:
+- Define a variable called height and receive an integer with input function. This will be the number of levels in your Christmas tree.
+- Creat a function called xmas_tree that has one parameter which is the height of the tree.
+- Use nested loops inside the function.
+- Create base separately and add it at the end so you can make sure it will be in the middle no matter what the height of the tree is.
+
+This one I made has a height of 20.
+
+                   *
+                  ***
+                 *****
+                *******
+               *********
+              ***********
+             *************
+            ***************
+           *****************
+          *******************
+         *********************
+        ***********************
+       *************************
+      ***************************
+     *****************************
+    *******************************
+   *********************************
+  ***********************************
+ *************************************
+***************************************
+                 *****
+                 *****
+                 *****
