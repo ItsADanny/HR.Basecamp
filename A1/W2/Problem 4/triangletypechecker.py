@@ -30,4 +30,4 @@ else:
         print("isosceles triangle")
     else:
         # and if all the sides are unique print:
-        print("escalenos triangle")
+        print("scalene triangle")

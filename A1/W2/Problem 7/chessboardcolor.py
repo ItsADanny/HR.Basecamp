@@ -24,7 +24,7 @@ for i in def_chessboard_letter_pos:
 
     # After getting the letter position translated into a number, preform a modular arithmetic calculation
     # and output the color of the position
-    if selected_letter_pos_int % int(input_pos_p2):
-        print("White")
-    else:
-        print("Black")
+if selected_letter_pos_int % int(input_pos_p2):
+    print("White")
+else:
+    print("Black")
