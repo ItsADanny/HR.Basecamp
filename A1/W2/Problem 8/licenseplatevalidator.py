@@ -13,7 +13,9 @@ if len(input_licenseplate) == 8:
         # If the license plate is an invalid length, print an invalid message.
         print("Invalid")
     else:
-        # Create 2 variables to see if all parts are valid and to see on which part you currently are
+        # Create 3 variables to see if all parts are valid, to see on which part you currently are and what part each part is
+        list_parts_type = []
+        list_parts_char_num = []
         invalid_parts = 0
         part = 0
 
@@ -25,30 +27,72 @@ if len(input_licenseplate) == 8:
                 if i.isalpha():
                     # Fully alphabetic, continue check
                     part += 1
+                    list_parts_type += "a"
                 elif i.isnumeric():
                     # Fully numeric, continue check
                     part += 1
+                    list_parts_type += "n"
                 else:
                     # If it's not fully an alphabetic or numeric part, Dean the part as invalid and continue check
                     invalid_parts += 1
                     part += 1
+
+                list_parts_char_num.append(len(i))
             elif part == 1 and len(i) != 1:
                 # If the second part is not 1 character long then continue the check, else dean it as an invalid part
                 if i.isalpha():
                     part += 1
+                    list_parts_type += "a"
                 elif i.isnumeric():
                     part += 1
+                    list_parts_type += "n"
                 else:
                     invalid_parts += 1
                     part += 1
+
+                list_parts_char_num.append(len(i))
             else:
                 invalid_parts += 1
                 part += 1
 
         # Check if there are any invalid parts detect.
         if invalid_parts == 0:
-            # If not print that its valid
-            print("Valid")
+            check_isvalid = False
+
+            print(f"list_parts_type: {list_parts_type}")
+            print(f"list_parts_char_num: {list_parts_char_num}")
+
+            if list_parts_type == ["a", "n", "n"] and list_parts_char_num == [2,2,2]:
+                check_isvalid = True
+            elif list_parts_type == ["n", "n", "a"] and list_parts_char_num == [2,2,2]:
+                check_isvalid = True
+            elif list_parts_type == ["n", "a", "n"] and list_parts_char_num == [2,2,2]:
+                check_isvalid = True
+            elif list_parts_type == ["a", "n", "a"] and list_parts_char_num == [2,2,2]:
+                check_isvalid = True
+            elif list_parts_type == ["a", "a", "n"] and list_parts_char_num == [2,2,2]:
+                check_isvalid = True
+            elif list_parts_type == ["n", "a", "a"] and list_parts_char_num == [2,2,2]:
+                check_isvalid = True
+            elif list_parts_type == ["n", "a", "n"] and list_parts_char_num == [2,3,1]:
+                check_isvalid = True
+            elif list_parts_type == ["n", "a", "n"] and list_parts_char_num == [1,3,2]:
+                check_isvalid = True
+            elif list_parts_type == ["a", "n", "a"] and list_parts_char_num == [2,3,1]:
+                check_isvalid = True
+            elif list_parts_type == ["a", "n", "a"] and list_parts_char_num == [1,3,2]:
+                check_isvalid = True
+            elif list_parts_type == ["a", "n", "a"] and list_parts_char_num == [3,2,1]:
+                check_isvalid = True
+            elif list_parts_type == ["n", "a", "n"] and list_parts_char_num == [1,2,3]:
+                check_isvalid = True
+            else:
+                check_isvalid = False
+
+            if check_isvalid:
+                print("Valid")
+            else:
+                print("Invalid")
         else:
             # If there are print that its invalid
             print("Invalid")
