@@ -4,10 +4,7 @@ def_punctuations = '''!()-[]{};*:'",<>./?@_~'''
 # Request an input from the user
 input_string = input("String: ")
 
-# Remove the whitespaces in the string
 stripped_string = input_string.strip()
-cleaned_string = stripped_string.replace(" ", "")
-
 # Loop over the string and punctuation list to see if there are any punctuations used, and if so replace them
 for i in stripped_string:
     if i in def_punctuations:
@@ -17,10 +14,10 @@ for i in stripped_string:
 stripped_string = stripped_string.lower()
 
 # Reverse the string
-reversed_string = cleaned_string[::-1]
+reversed_string = stripped_string[::-1]
 
 # Check if the result is the same as it's normally spelled
-if reversed_string == cleaned_string:
+if reversed_string == stripped_string:
     print(f"\"{input_string}\" is a palindrome")
 else:
     print(f"\"{input_string}\" is not a palindrome")
