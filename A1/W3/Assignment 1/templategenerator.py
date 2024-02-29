@@ -6,7 +6,6 @@ def template_generator():
     # Retrieve the global variable to shut down the program
     global glob_var_done
 
-    user_input = ""
     if FirstTime:
         user_input = input("Do you want to make a letter? (Yes or No): ")
     else:
@@ -81,11 +80,56 @@ def template_generator():
                 valid_job_title = True
 
         if lettertype == 1:
+            # Job Offer
+            valid_salary = False
+            while not valid_salary:
+                input_salary = input("Annual Salary?: ")
+
+                isfloat = False
+                try:
+                    temp_input_salary = input_salary.replace(".", "")
+                    temp_float_test = float(temp_input_salary)
+                    isfloat = True
+                except ValueError:
+                    print("Invalid salary given, Give a valid salary (example: 20.000,00)")
+
+                if isfloat:
+                    float_input_salary = float(input_salary)
+                    if 20000 < float_input_salary < 80000:
+
+                    else:
+                        print("Invalid salary given, Give a valid salary (salary must be between 20.000,00 and 80.000,00)")
+
+            #TODO: Insert the salary input
+            #TODO: Insert the start date input
 
         elif lettertype == 2:
+            # Rejection Letter
+            feedback = False
+            valid_feedback_response = False
+            while not valid_feedback_response:
+                input_feedback = input("Feedback? (Yes or No): ")
+
+                if input_feedback.isalpha():
+                    if input_feedback.upper() == "YES":
+                        feedback = True
+                        valid_feedback_response = True
+                    elif input_feedback.upper() == "NO":
+                        feedback = False
+                        valid_feedback_response = True
+                    else:
+                        print("Invalid")
+                else:
+                    print("Invalid")
+
+            feedback_str = ""
+            if feedback:
+                input_feedback = input("Enter your Feedback (One Statement): ")
+                feedback_str = input_feedback
+
+            generate_rejection(firstname, lastname, job_title, feedback_str)
         else:
-
-
+            print("Invalid Lettertype, Please use a valid lettertype")
     else:
         glob_var_done = True
 
