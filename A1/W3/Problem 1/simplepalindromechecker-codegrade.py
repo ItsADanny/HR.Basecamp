@@ -4,9 +4,13 @@
 input_string = input("String: ")
 
 # Reverse the string
+list_string = ""
+for i in input_string:
+    list_string += i
+
 reversed_string = ""
-for i in reversed(input_string):
-    reversed_string += i
+for i in range(len(list_string)-1, -1, -1):
+    reversed_string += list_string[i]
 
 # Check if the result is the same as it's normally spelled
 if reversed_string == input_string:
