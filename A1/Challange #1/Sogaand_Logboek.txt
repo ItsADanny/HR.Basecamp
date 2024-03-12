@@ -1,0 +1,54 @@
+-Tuesday 05/03/2024-
+
+    12:00-12:30: My team and I started brainstorming ideas for our boardgame on site. We are considering using pygame to visualize our boardgame,
+    so we will first spend some time getting familiar with pygame and its possibilities.
+
+    12:30-13:00: We figured its best to stick to using the terminal for our boardgame, as we agreed pygame might be too much work as of right now
+    and it would probably be better for something like a racing game rather than a board game.
+
+    13:00-15:30: We managed to come up with a full concept for our boardgame and worked it out in a word document to have a good overview 
+    of what we want to do and achieve. 
+
+    1:00-22:00: I spent some time looking up python (board) game tutorials on youtube to get some inspiration and ideas to implement in our board
+    game. 
+
+Time spent today: 4,5 hours
+
+-Wednesday 06/03/2024-
+
+    10:00-10:30: We started of the day by getting in a group call and discussing what we want to achieve today, and what each member would be
+    focussing on. My goal is to finish a bare bones version of the dialogues and start coding, ideally the board will be done today.
+
+    10:30-13:00: I will start off by further working out our word overview. We want to implement different dialogues in our game, so I will be 
+    writing the dialogues etc.
+
+    13:00-14:30: Trying to make the board. I was struggling to get something I was satisfied with, so I will wait and ask my team to help
+    me tomorrow to explore further options.
+
+    15:00-16:00: Writing more dialogue for the special fields.
+
+Time spent today: 6 hours
+
+-Thursday 07/03/2024-
+
+    08:00-09:00: I started today by writing more dialogues for the special fields. 
+
+    10:00-12:30: We had a quick standup on-site and shared what each member has done so far.
+    we've made good progress, the startup screen of our boardgame is as good as finished. A good portion of classes is finished.
+    I'm continuing with dialogues and starting to implement it into a class
+
+    13:30-16:00: I helped Julian with rewriting his wordle code to make it work a bit better. 
+
+Time spent today: 6 hours
+
+-Friday 08/03/2024-
+    09:00-14:00: I changed the wordle game to be a game of hangman
+    15:00-17:00: Extra dialogues to have a good amount of variation within our game
+
+Time spent today: 7 hours
+
+-Monday 11/03/2024-
+    10:00-13:00: Testing game and looking for potential bugs
+    20:00-23:00: Debugging and adding final details with the group
+
+Time spent today: 6 hours

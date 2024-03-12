@@ -36,7 +36,7 @@ def template_generator():
             if 2 < len(input_firstname) <= 10:
                 result_isalpha = input_firstname.isalpha()
                 result_isfirstupper = False
-                if input_firstname[1] == input_firstname[1].upper():
+                if input_firstname[0] == input_firstname[0].upper():
                     result_isfirstupper = True
                 if result_isalpha and result_isfirstupper:
                     firstname = input_firstname
@@ -50,12 +50,13 @@ def template_generator():
         valid_last_name = False
         lastname = ""
         while not valid_last_name:
-            input_lastname = input("First Name?: ")
+            input_lastname = input("Last Name?: ")
 
             if 2 < len(input_lastname) <= 10:
                 result_isalpha = input_lastname.isalpha()
                 result_isfirstupper = False
-                if input_lastname[1] == input_lastname[1].upper():
+                if input_lastname[0] == input_lastname[0].upper():
+
                     result_isfirstupper = True
                 if result_isalpha and result_isfirstupper:
                     lastname = input_lastname
@@ -70,7 +71,9 @@ def template_generator():
         while not valid_job_title:
             input_jobtitle = input("Job Title?: ")
 
-            result_isalpha = input_jobtitle.isalpha()
+            temp_input_jobtitle = input_jobtitle.strip()
+            temp_input_jobtitle = temp_input_jobtitle.replace(" ", "")
+            result_isalpha = temp_input_jobtitle.isalpha()
             result_isgoodlength = False
             if len(input_jobtitle) >= 10:
                 result_isgoodlength = True
@@ -79,29 +82,61 @@ def template_generator():
                 job_title = input_jobtitle
                 valid_job_title = True
 
+            print(f"result_isalpha: {result_isalpha}")
+            print(f"result_isgoodlength: {result_isgoodlength}")
+
         if lettertype == 1:
             # Job Offer
             valid_salary = False
+            salary = float(0)
             while not valid_salary:
                 input_salary = input("Annual Salary?: ")
 
                 isfloat = False
                 try:
                     temp_input_salary = input_salary.replace(".", "")
+                    temp_input_salary = temp_input_salary.replace(",", ".")
+                    print(f"temp_input_salary {temp_input_salary}")
                     temp_float_test = float(temp_input_salary)
                     isfloat = True
                 except ValueError:
                     print("Invalid salary given, Give a valid salary (example: 20.000,00)")
 
                 if isfloat:
-                    float_input_salary = float(input_salary)
+                    temp_input_salary = input_salary.replace(".", "")
+                    temp_input_salary = temp_input_salary.replace(",", ".")
+                    float_input_salary = float(temp_input_salary)
                     if 20000 < float_input_salary < 80000:
-
+                        salary = input_salary
+                        valid_salary = True
                     else:
                         print("Invalid salary given, Give a valid salary (salary must be between 20.000,00 and 80.000,00)")
 
-            #TODO: Insert the salary input
-            #TODO: Insert the start date input
+            valid_startdate = False
+            startdate = ""
+            while not valid_startdate:
+                input_startdate = input("Start Date?(YYYY-MM-DD) : ")
+
+                input_year = input_startdate[0:4]
+                input_month = input_startdate[5:7]
+                input_day = input_startdate[8:10]
+
+                valid_date = False
+                if input_year in ["2020", "2021"]:
+                    if input_month.isnumeric():
+                        int_input_month = int(input_month)
+                        if 0 < int_input_month < 13:
+                            if input_day.isnumeric():
+                                int_input_day = int(input_day)
+                                if 0 < int_input_day < 31:
+                                    startdate = input_startdate
+                                    valid_date = True
+                                    valid_startdate = True
+
+                if not valid_date:
+                    print("Invalid date, Please input a valid date (YYYY-MM-DD)")
+
+            generate_joboffer(firstname, lastname, job_title, salary, startdate)
 
         elif lettertype == 2:
             # Rejection Letter

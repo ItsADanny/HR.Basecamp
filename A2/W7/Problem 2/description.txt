@@ -1,0 +1,39 @@
+A data file containing Netflix title is provided.
+
+Menu structure:
+-------------------------------------------------------------------------------------------------
+[1] Print the amount of TV Shows
+[2] Print the amount of Movies
+[3] Print the (full) names of directors in alphabetical order who lead both tv shows and movies.
+    (for example, search the name David Ayer. He is the director of three movies and one tv show)
+    Treat multitple directors (seperated by comma) as 1 single director!
+[4] Print the name of each director in alphabetical order,
+    the number of movies and the number of tv shows (s)he was the director of.
+    Use a tuple with format: (director name, number of movies, number of tv shows) to print.
+-------------------------------------------------------------------------------------------------
+
+Criteria:
+-------------------------------------------------------------------------------------------------
+* The program gets the file name as a program argument.
+* Use the function load_csv_file to load the content of the file in a list.
+* The first line of the file specifies the name of each column.
+  For example, the first column is show_id, the second is the type of the show, etc...
+  Create a function called get_headers(file_content) that returns a list of all the columns from the
+  first row (explore the kind of information you can extract)
+* Make a function search_by_type(file_content, show_type) that returns a list of all TV Shows or Movies based on the requested type
+    @ Make use of lambda for the solution
+* Make a function search_by_director(file_content, director) that returns a list of all TV Shows and Movies that have that director
+    @ Make use of lambda for the solution
+* Make a function get_directors(file_content) that returns a set of directors in the list (use set for single directors only)
+    @ Treat multitple directors (seperated by comma) as 1 single director!
+-------------------------------------------------------------------------------------------------
+
+Input example:
+=================================================================================================
+4
+=================================================================================================
+
+Output example:
+=================================================================================================
+[('A. L. Vijay', 2, 0), ('A. Raajdheep', 1, 0), ...
+=================================================================================================

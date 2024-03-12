@@ -1,0 +1,24 @@
+LogBook: Julian
+
+Tuesday 05-03-2024
+    Developement/Idea Brainstorming = 6h
+Total Thusfar = 6h
+
+Wednesday 06-03-2024
+    Trivia generated = 3h
+    Beginning developing training-fields field = 5h
+Total Thusfar = 14h
+
+Thursday 07-03-2024
+    Finished training-fields field = 4h
+    Started on random-event field = 4h
+Total Thusfar = 22h
+
+Friday 08-03-2024
+    Finished random-event field = 3h
+    Started and finished star field = 2h 
+Total Thusfar = 27h
+
+Monday 11-03-2024
+    Finishing everything up/bug tested = 3h
+Total = 30h

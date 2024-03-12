@@ -1,0 +1,37 @@
+A data file containing average daily temperature of Amsterdam is used. The first column is the month number, the second is the day number, the third is the year and fourth column is the temperature in Farenheit.
+
+Menu structure:
+-------------------------------------------------------------------------------------------
+[1] Print the average temperatures per year (fahrenheit)
+[2] Print the average temperatures per year (celsius) Hint: Use built-in map() function.
+[3] Print the warmest and coldest year as tuple based on the average temperature
+[4] Print the warmest month of a year based on the input year of the user (full month name)
+[5] Print the coldest month of a year based on the input year of the user (full month name)
+[6] Print a list of tuples where the first element of each tuple is the year and
+    the second element of the tuple is a dictionary with months as the keys and
+    the average temprature (in Celsius) of each month as the value
+-------------------------------------------------------------------------------------------
+
+
+Criteria:
+-------------------------------------------------------------------------------------------------
+* Use the function load_txt_file to load the content of the file in a list. Use the following format for
+  the storage: {year: {month: [temp, temp, temp, ...]}, ...}
+* Create a function fahrenheit_to_celsius(fahrenheit: float) -> float that given the value in fahrenheit returns
+  the temperature in celsius (rounding is not needed)
+* Create a function average_temp_per_month(temperatures_per_year: dict) -> list that calculates the average temperature per month.
+  Return a list of tuples (month, temperature).
+* Create a function average_temp_per_year(temperatures: dict) -> list that calculates the average temperature per year.
+  Return a list of tuples (year, temperature).
+-------------------------------------------------------------------------------------------------
+
+Input example:
+=================================================================================================
+4
+1997
+=================================================================================================
+
+Output example:
+=================================================================================================
+August
+=================================================================================================

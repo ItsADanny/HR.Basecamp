@@ -1,0 +1,43 @@
+Implement a Python program that collects book information.
+
+Criteria:
+-------------------------------------------------------------------------------------------------
+Entering new book: The program will ask to enter: book title, book author, publisher, publication date
+Input will be (comma seperated, single line). A book title can only be added to the list once (no duplication)
+Searching a book: The user enters a term and the program must search the term within titles, authors and publishers and report the existence of such a book with the requested term.
+Create a function called: search_book(books, term) which will return True or False on a match or not
+Use a list of dictionaries for datastorage with the following attribute fields: [title, author, publisher, pub_date]
+-------------------------------------------------------------------------------------------------
+
+Default menu:
+------------------------
+[A] Add book
+[S] Search book
+[E] Exit (and print)
+------------------------
+
+Input example (entering new book):
+=================================================================================================
+Book details: harry potter,rowling,bloomsbury,1997
+=================================================================================================
+
+Output example (entering new book):
+=================================================================================================
+Book has been added
+=================================================================================================
+
+Input example (searching a book):
+=================================================================================================
+Search term: rowling
+=================================================================================================
+
+Output example (searching a book):
+=================================================================================================
+Found a book for: rowling
+=================================================================================================
+
+Output example (exiting):
+=================================================================================================
+{'title': 'Clean Code', 'author': 'Martin Robert', 'publisher': 'Financial Times Prentice Hall', 'pub_date': '2008'}
+{'title': 'The Clean Coder', 'author': 'Martin Robert', 'publisher': 'Financial Times Prentice Hall', 'pub_date': '2011'}
+=================================================================================================
