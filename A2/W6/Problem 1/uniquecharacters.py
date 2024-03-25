@@ -13,7 +13,7 @@ def unique_chars_dict(word):
 
 
 def unique_chars_set(word):
-    sets = {}
+    sets = set()
 
     for char in word:
         sets.add(char)
@@ -23,3 +23,9 @@ def unique_chars_set(word):
         unique += 1
 
     return unique
+
+
+if __name__ == "__main__":
+    input_word = input("What word would you like to use?")
+    print(unique_chars_dict(input_word))
+    print(unique_chars_set(input_word))

@@ -1,33 +1,38 @@
-# Import the required module
-import string
+def password_check():
+    chances_used = 0
+    while chances_used != 3:
+        input_user = input("Enter : ")
+        validation_results = password_validion(input_user)
+
+        if validation_results:
+            print("Password is valid")
+            break
+        else:
+            print("Password is invalid")
+            chances_used += 1
 
 
-def password_checker(password: str):
+def password_validion(password: str):
     sets = set()
 
     for char in password:
         sets.add(char)
 
-    if 7 <= len(sets) <= 19:
-        acii_uppercase = string.ascii_uppercase
-        acii_lowercase = string.ascii_lowercase
-        acii_digits = string.digits
+    if 8 <= len(password) <= 19:
+        acii_uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        acii_lowercase = "abcdefghijklmnopqrstuvwxyz"
+        acii_digits = "0123456789"
         allowed_symbols = "*@!?"
         total_allowed_list = acii_uppercase + acii_lowercase + acii_digits + allowed_symbols
 
         valids = 0
         invalids = 0
 
-        print(f"sets : {sets}")
-
         for set_value in sets:
-            if set_value not in allowed_symbols:
-                valids += 1
-            else:
+            if set_value not in total_allowed_list:
                 invalids += 1
-
-        print(f"valids : {valids}")
-        print(f"invalids : {invalids}")
+            else:
+                valids += 1
 
         if valids == len(sets) and invalids == 0:
             return True
@@ -37,5 +42,5 @@ def password_checker(password: str):
         return False
 
 
-input_user = input("Enter : ")
-print(f"password_checker : {password_checker(input_user)}")
+if __name__ == "__main__":
+    password_check()

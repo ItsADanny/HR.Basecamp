@@ -7,15 +7,14 @@ def next_verse(vers_number: int):
     item_str = ""
     # Preform a for-loop in which we loop over a range of the current days + 1
     for e in range((vers_number + 1)):
-        # If the item string is empty, then only add the item to the item_str
         if item_str == "":
             item_str += item_list[e]
-        # If the current day in the range is 11 then add a and instead of a comma
-        elif e == 11:
-            item_str += " And " + item_list[e]
-        # Else add a comma to separate the item_str
         else:
-            item_str += ", " + item_list[e]
+            if e != vers_number:
+                item_str = item_list[e] + ", " + item_str
+            else:
+                # item_str = item_str + " and " + item_list[e]
+                item_str = item_list[e] + " and " + item_str
 
     # Retriev the selected day
     day = days_list[vers_number]
