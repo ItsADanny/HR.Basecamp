@@ -1,0 +1,28 @@
+Create a password manager.
+
+Write a class called PasswordManager
+
+Criteria:
+* The class should have a list called old_passwords that holds all of the user’s past passwords.
+* There should be a method called get_password that returns the current password and a method
+  called set_password that sets the user’s password.
+* Finally, create a method called is_correct that receives a string and returns a boolean True or False
+  depending on whether the string is equal to the current password or not.
+
+Extra:
+* The last item of the list old_passwords is the user’s current password.
+* The set_password method should only change the password if the attempted password
+  is different from all the user’s past passwords.
+
+
+____________________________________
+Input example:
+____________________________________
+No input is given
+____________________________________
+
+____________________________________
+Output example:
+____________________________________
+No output is required
+____________________________________

@@ -1,0 +1,22 @@
+When you take a taxi to a certain place, you pay for the amount of distance you traveled along with a basefare.
+Write a program that interacts with the user and calculates the fare of a taxi drive for a specified distance.
+
+Criteria:
+-------------------------------------------------------------------------------------------------
+* Base fare is 4.00 EUR
+* Fare per 140 meter traveled is 0.25 EUR
+* Use a function called calculate_fare(distance)
+  that takes the distance in kilometers and returns the total fare as result
+-------------------------------------------------------------------------------------------------
+
+Input examples:
+=================================================================================================
+1. Distance traveled: 2
+2. Distance traveled: 1.4
+=================================================================================================
+
+Output examples:
+=================================================================================================
+1. Total fare: 7.75 EUR
+2. Total fare: 6.50 EUR
+=================================================================================================

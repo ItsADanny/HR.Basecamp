@@ -1,0 +1,34 @@
+Calculating distances in differente formats is hard, so we would like a program to do this for us.
+
+Write a class called Converter.
+
+Criteria:
+* The user will pass a length and a unit when declaring an object
+  from the class—for example, c = Converter(9,'inches').
+* For each of these units there should be a method that returns the length
+  converted into those units. For example, using the Converter object created above,
+  the user could call c.feet() and should get 0.75 as the result.
+* Use meters as base unit to convert to and from (this prevents rounding errors)
+
+Units:
+* inches
+* feet
+* yards
+* miles
+* kilometers
+* meters
+* centimeters
+* millimeters
+
+____________________________________
+Input example:
+____________________________________
+c = Converter(9,'inches')
+print(c.feet())
+____________________________________
+
+____________________________________
+Output example:
+____________________________________
+0.75
+____________________________________

@@ -1,0 +1,9 @@
+(Optional problem)
+
+A password that contains random characters is a relatively secure password, but it is also difficult to memorize.
+As an alternative, some systems construct a password by taking two English words and concatenating them.
+While this password isn’t as secure, it is much easier to memorize.
+Write a program that reads a file (from input) containing a list of words, randomly selects two of them, and concatenates them to produce a new password.
+When producing the password ensure that it has a minimum of 8 and a maximum of 10 characters, and that each word used is at least three letters long.
+Capitalize each word in the password so that the user can easily see where one word ends and the next one begins.
+Print the password for the user.

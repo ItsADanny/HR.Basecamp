@@ -6,6 +6,7 @@ dict_key_value = {}
 encoded_values = []
 decoded_values = []
 
+
 def program():
     running = True
     while running:
@@ -13,15 +14,17 @@ def program():
         print_menu()
         # Request an input from the user
         input_user_selection = input("")
+        # Check if the input is a alphabetic character
         if input_user_selection.isalpha():
+            # Turn the input from the user into an uppercase character
             input_user_selection = input_user_selection.upper()
-
+            # Check if the input from the user is valid
             if input_user_selection == "E":
-                input_user_to_encode = input("Enter")
+                input_user_to_encode = input("Enter : ")
                 encoded_str = encode_string(input_user_to_encode)
                 print(encoded_str)
             elif input_user_selection == "D":
-                input_user_to_decode = input("Enter")
+                input_user_to_decode = input("Enter : ")
                 decoded_str = decode_string(input_user_to_decode)
                 print(decoded_str)
             elif input_user_selection == "P":
@@ -54,9 +57,21 @@ def print_menu():
 
 
 def encode_string(data: str, key: str = None) -> str:
+    encoded_data = []
+
+    for item in data:
+        encoded_data.append(encode_string(item, key))
+
+    return encoded_data
 
 
 def decode_string(data: str, key: str = None) -> str:
+    decoded_data = []
+
+    for item in data:
+        decoded_data.append(decode_string(item, key))
+
+    return decoded_data
 
 
 def encode_list(data: list, key: str = None) -> list:
@@ -78,11 +93,11 @@ def decode_list(data: list, key: str = None) -> list:
 
 
 def validate_values(encoded: str, decoded: str, key: str = None) -> bool:
-
+    pass
 
 
 def set_dict_key(conversion_string: str) -> None:
-
+    pass
 
 
 program()
