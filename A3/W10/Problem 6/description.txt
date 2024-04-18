@@ -1,30 +1,40 @@
-The Twelve Days of Christmas is a repetitive song that describes an increasingly long list of gifts sent to one’s true love on each of 12 days.
-A single gift is sent on the first day. A new gift is added to the collection on each additional day, and then the complete collection is sent.
+When you write a function, it is a good idea to include a comment that outlines the function’s purpose,
+its parameters and its return value. However, sometimes comments are forgotten,
+or left out by well-intentioned programmers that plan to write them later but then never get around to it.
 
-The first three verses of the song are shown below. The complete lyrics are available on the internet.
-* On the first day of Christmas my true love sent to me: A partridge in a pear tree.
-* On the second day of Christmas my true love sent to me: Two turtle doves, And a partridge in a pear tree.
-* On the third day of Christmas my true love sent to me: Three French hens, Two turtle doves, And a partridge in a pear tree.
-  Your task is to write a program that displays the complete lyrics for The Twelve Days of Christmas.
+Create a python program that reads one or more Python source files and identifies functions
+that are not immediately preceded by a comment.
 
-Criteria:
--------------------------------------------------------------------------------------------------
-* Create a function called next_verse(vers_number: int) -> str
-* Call this function 12 times with integers that increase from 1 to 12
-* Each day should be represented as a string (1st, 2nd, 3rd, 4th, ...)
-* The last item is always concatenated with a And, all items before that are joined by a ,(comma)
--------------------------------------------------------------------------------------------------
+Extra:
+* For the purposes of this exercise, assume that any line that begins with def, followed by a space,
+  is the beginning of a function definition.
+* Assume that the comment character, #, will be the first character on the previous line when the function has a comment.
+* Display the names of all of the functions that do not have a comment,
+  along with the file name and line number where the function definition is located.
+* The user will provide the names of one or more Python files as command line parameters (comma separated).
 
-Input example:
-=================================================================================================
-No input is given
-=================================================================================================
+Input example (correct):
+======================================================================================================
+functiontest.txt
+======================================================================================================
 
-Output example:
-=================================================================================================
-On the 1st day of Christmas, my true love sent to me A partridge in a pear tree
-On the 2nd day of Christmas, my true love sent to me Two turtledoves And A partridge in a pear tree
-On the 3rd day of Christmas, my true love sent to me Three French hens, Two turtledoves And A partridge in a pear tree
-On the 4th day of Christmas, my true love sent to me Four calling birds, Three French hens, Two turtledoves And A partridge in a pear tree
-...
-=================================================================================================
+Output example (correct):
+======================================================================================================
+File: functiontest.txt contains a function [function_name_here()] on line [1] without a preceding comment.
+File: functiontest.txt contains a function [another_function_name_here()] on line [15] without a preceding comment.
+======================================================================================================
+
+Input example (error):
+======================================================================================================
+functiontest.txt, blanc
+======================================================================================================
+
+Output example (error):
+======================================================================================================
+File: functiontest.txt contains a function [function_name_here()] on line [1] without a preceding comment.
+File: functiontest.txt contains a function [another_function_name_here()] on line [15] without a preceding comment.
+======================================================================================================
+
+======================================================================================================
+Error reading file: "blanc"
+======================================================================================================

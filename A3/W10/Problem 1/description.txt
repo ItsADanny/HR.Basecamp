@@ -1,30 +1,35 @@
-A primary school teacher needs to automate basic arithmetic (summation, multiplication table, subtraction) exercises for her students. You are asked to implement a program that asks what type of the arithmetic the user needs to practice. Then, the program will generate exercises and the user should give the result.
+Unix-based operating systems usually include a tool named head.
+It displays the first 10 lines of a file whose name is provided as a command line parameter.
+Write a Python program that provides the same behavior.
 
 Criteria:
--------------------------------------------------------------------------------------------------
-For each arithmetic operation keep the total number of the exercises 10
-The program must be interactive (generate random numbers for each operation, use random module)
-Your program must be implemented with a function arithmetic_operation(arithmetic_type)
-The artihmetic_type can be (summation, multiplication, subtraction)
-Numbers for summation, subtractions and multiplications will be between 1 and 100
-Collect all the mistakes from the user and print them at the end
--------------------------------------------------------------------------------------------------
+* Use sys.argv to get the file from running
 
-Input example:
-=================================================================================================
-Arethmetic operation: summation
-1 + 4 = 4
-3 + 3 = 6
-6 + 2 = 8
-5 + 1 = 7
-3 + 8 = 8
-5 + 4 = 9
-8 + 3 = 10
-1 + 6 = 7
-3 + 9 = 11
-=================================================================================================
+Input example (correct):
+======================================================================================================
+python3 head.py randomfile.txt
+======================================================================================================
 
-Output example:
-=================================================================================================
-You had 4 correct and 6 incorrect answers in "summation"
-=================================================================================================
+Output example (correct):
+======================================================================================================
+this is line #1
+this is line #2
+this is line #3
+this is line #4
+this is line #5
+this is line #6
+this is line #7
+this is line #8
+this is line #9
+this is line #10
+======================================================================================================
+
+Input example (error):
+======================================================================================================
+blanc
+======================================================================================================
+
+Output example (error):
+======================================================================================================
+Error reading file: "blanc"
+======================================================================================================

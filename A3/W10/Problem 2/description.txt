@@ -1,22 +1,48 @@
-When you take a taxi to a certain place, you pay for the amount of distance you traveled along with a basefare.
-Write a program that interacts with the user and calculates the fare of a taxi drive for a specified distance.
+In addition to head (A3W10P1), Unix-based operating systems also typically include a tool named tail.
+It displays the last 10 lines of a file whose name is provided as a command line parameter.
+Write a Python program that provides the same behavior.
+
+Note:
+There are several different approaches to solving this problem. Implement the three options and
+experiment with files with large content. Analyse the performance of each option (measure execution
+time of each solution).
+
+Options:
+1. is to load the entire contents of the file into a list and then display the last 10 elements.
+2. is to read the contents of the file twice, once to count the lines, and a second time to display
+   the last 10 lines.
+3. Options one and two are not desirable when working with large files.
+   Another solution exists that only requires you to read the file once,
+   and only requires you to store 10 lines from the file at one time.
 
 Criteria:
--------------------------------------------------------------------------------------------------
-* Base fare is 4.00 EUR
-* Fare per 140 meter traveled is 0.25 EUR
-* Use a function called calculate_fare(distance)
-  that takes the distance in kilometers and returns the total fare as result
--------------------------------------------------------------------------------------------------
+* Use sys.argv to get the file from running
 
-Input examples:
-=================================================================================================
-1. Distance traveled: 2
-2. Distance traveled: 1.4
-=================================================================================================
+Input example (correct):
+======================================================================================================
+python3 tail.py randomfile.txt
+======================================================================================================
 
-Output examples:
-=================================================================================================
-1. Total fare: 7.75 EUR
-2. Total fare: 6.50 EUR
-=================================================================================================
+Output example (correct):
+======================================================================================================
+this is line #91
+this is line #92
+this is line #93
+this is line #94
+this is line #95
+this is line #96
+this is line #97
+this is line #98
+this is line #99
+this is line #100
+======================================================================================================
+
+Input example (error):
+======================================================================================================
+blanc
+======================================================================================================
+
+Output example (error):
+======================================================================================================
+Error reading file: "blanc"
+======================================================================================================

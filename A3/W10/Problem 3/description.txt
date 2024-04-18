@@ -1,38 +1,26 @@
-If you have 3 straws, possibly of differing lengths,
-it may or may not be possible to lay them down so that they form a triangle when their ends are touching.
-For example, if all of the straws have a length of 6 inches.
-then one can easily construct an equilateral triangle using them.
-However, if one straw is 6 inches. long, while the other two are each only 2 inches.
-long, then a triangle cannot be formed.
+In this exercise you will create a Python program that identifies the longest word(s) in a file.
 
-Criteria:
--------------------------------------------------------------------------------------------------
-Only determin Equilateral triangle
-If any one length is greater than or equal to the sum of the other two then the lengths cannot be used to form a triangle
-Use a function called check_triangle(side_a, side_b, side_c) -> bool
-Each side can be on a seperate line
-Print possible on correct triangle and impossible when triangle can't be formed
--------------------------------------------------------------------------------------------------
+Extra:
+Treat any group of non-white space characters as a word, even if it includes numbers or punctuation marks.
 
-Input examples:
-=================================================================================================
-Example 1:
-    ------------------
-    Side A: 6
-    Side B: 5
-    Side C: 4
-    ------------------
+Input example (correct):
+======================================================================================================
+randomtext.txt
+======================================================================================================
 
-Example 2:
-    ------------------
-    Side A: 3
-    Side B: 1
-    Side C: 1
-    ------------------
-=================================================================================================
+Output example (correct):
+======================================================================================================
+Length of longest word(s) is [11] chars
+These are all the words of that length:
+discovered., continuing., everything., interested., favourable., themselves., solicitude
+======================================================================================================
 
-Output examples:
-=================================================================================================
-1. Possible triangle
-2. Impossible triangle
-=================================================================================================
+Input example (error):
+======================================================================================================
+blanc
+======================================================================================================
+
+Output example (error):
+======================================================================================================
+Error reading file: "blanc"
+======================================================================================================

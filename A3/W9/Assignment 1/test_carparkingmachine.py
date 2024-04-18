@@ -3,11 +3,9 @@ from datetime import datetime, timedelta
 
 # Test for a normal check-in with correct result (True)
 def test_check_in_capacity_normal():
-
-# Test for a check-in with maximum capacity reached (False)
+    # Test for a check-in with maximum capacity reached (False)
 def test_check_in_capacity_reached():
-
-# Test for checking the correct parking fees
+    # Test for checking the correct parking fees
 def test_parking_fee():
     # Assert that parking time 2h10m, gives correct parking fee
     # Assert that parking time 24h, gives correct parking fee

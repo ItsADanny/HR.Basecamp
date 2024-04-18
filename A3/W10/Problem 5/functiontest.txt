@@ -1,0 +1,7 @@
+def function_without_comment():
+    return False
+
+
+# Comment
+def function_with_comment():
+    return True

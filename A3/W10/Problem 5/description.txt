@@ -1,19 +1,31 @@
-Coming up with new random passwords is becoming a hard task.
-To make this job a lot easier, you are going to implement a program that creates a random password.
+In this exercise, you will create a program that removes all of the comments from a Python source file.
 
-Criteria:
--------------------------------------------------------------------------------------------------
-Create a function called generate_random_password() -> str
-The password should have a random length of between 7 and 10 characters
-Each character should be randomly selected from positions 33 to 126 in the ASCII table
--------------------------------------------------------------------------------------------------
+Extra:
+* Python uses the # character to mark the beginning of a comment.
+* The comment ends at the end of the line containing the # character.
+* Check each line in the file to determine if a # character is present.
+  If it is then your program should remove all of the characters from the # character to the
+  end of the line (we’ll ignore the situation where the comment character occurs inside of a string).
+* The user will also enter the name of the input file.
+* Save the modified file using a new name that will be entered by the user.
 
-Input example:
-=================================================================================================
-No input is given
-=================================================================================================
+Input example (correct):
+======================================================================================================
+File to read: functiontest.txt
+File to save: cleaned-functiontest.txt
+======================================================================================================
 
-Output example:
-=================================================================================================
-Zo9o3fA2
-=================================================================================================
+Output example (correct):
+======================================================================================================
+No output should be given
+======================================================================================================
+
+Input example (error):
+======================================================================================================
+blanc
+======================================================================================================
+
+Output example (error):
+======================================================================================================
+Error reading file: "blanc"
+======================================================================================================
