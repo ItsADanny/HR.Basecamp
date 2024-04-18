@@ -52,9 +52,5 @@ try:
 except FileNotFoundError:
     print(f"Error reading file: {input_file}")
 
-
-
-
-
-
-
+if __name__ == "__main__":
+    pass

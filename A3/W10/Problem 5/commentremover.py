@@ -36,3 +36,6 @@ if input_uncommentedfile.endswith(".txt"):
 else:
     # If the Cleaned file name is invalid, print an error message
     print(f"Invalid cleaned file name. File must end with \".txt\"")
+
+if __name__ == "__main__":
+    pass

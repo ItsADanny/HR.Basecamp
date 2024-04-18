@@ -42,3 +42,6 @@ try:
 except FileNotFoundError:
     # If there is any problem, then print that there is an error with reading the file
     print(f"Error reading file: {input_commentedfile}")
+
+if __name__ == "__main__":
+    pass

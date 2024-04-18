@@ -33,3 +33,6 @@ except IOError:
     print(f"Error reading file: {sys.argv[1]}")
 except IndexError:
     print(f"Error reading file: {sys.argv[1]}")
+
+if __name__ == "__main__":
+    pass

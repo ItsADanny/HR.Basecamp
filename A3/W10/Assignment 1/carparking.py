@@ -20,7 +20,8 @@ class CarParkingMachine:
     parked_cars = {}
 
     # When we initiate the class this will be set as the classes information
-    def __init__(self, capacity, hourly_rate):
+    def __init__(self, id, capacity, hourly_rate):
+        self.id = id
         self.capacity = capacity
         self.hourly_rate = hourly_rate
         self.parked_cars = {}
