@@ -66,7 +66,7 @@ while len(input_straw_list) != 3:
     pos += 1
 
 # Preform the function in an if-else statement and print if its possible triangle
-# , or an impossible triangle after getting the results from the function
+# or an impossible triangle after getting the results from the function
 if check_triangle(input_straw_list[0], input_straw_list[1], input_straw_list[2]):
     print("Possible triangle")
 else:

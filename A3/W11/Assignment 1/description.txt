@@ -1,0 +1,77 @@
+Projects always have room for improvements. Luckily we have learned this week about CSV and JSON. Things the owner wants to have solved.
+
+* Car parking machines should technically be more separated.
+* People could successfully check-in in multiple garages at the same time.
+* There was no easy way to get details about a specific garage.
+* The code to recover the garage state was getting slow overtime and a bit complicated.
+
+For this assignment you are going to expand your carparking program to handle reading and writing
+of structured data files in JSON and CSV format. New functionality needs to be added to the existing
+program from week 10 which will be explained in depth below.
+
+Retrieving and storing the car parking machine state with a JSON data file
+In the previous assignment you created functionality to load the state (parked cars) of car parking machines
+from the log files.
+Now you will modify this functionality by using a JSON data file to read/write the state of the
+car parking machines.
+
+Every car parking machine will save the state in its own JSON file! Provide a unique name or
+ID when instantiating a new car parking machine object. Use this name (or ID) to create a JSON file
+with this name (or ID), for example "north_state.json".
+If the JSON file already exists (for example this specific car parking machine object has been created earlier)
+the existing file should be used and the previous state should be read and loaded.
+
+The state should contain the parked cars from the car parking machine.
+See the following JSON format to store parked cars in the file:
+==============================================================================================================
+[
+    {
+        "license_plate": "2-ABC-09",
+        "check_in": "09-21-2022 16:20:04"
+    },
+    {
+        "license_plate": "3-XYZ-10",
+        "check_in": "09-21-2022 17:20:50"
+    }
+]
+==============================================================================================================
+
+The following actions will result in data being read from or written to the JSON data file:
+
+* Check-in of a car (add car to json)
+* Check-out of a car (remove car from json)
+* Check-in validation
+
+A car should only be able to check-in at a car parking machine if it does not have an open check-in
+(checked-in, but not checked-out yet) at another car parking machine within the same timeframe.
+Modify the CarParkingMachine class check_in method to add this new functionality.
+
+To be able to check all currently parked cars in all car parking machines,
+you should keep track of created car parking machine instances and check their car parking machine states.
+A possible solution would be to create a list in your main program and add the name (or ID)
+of created parking machine to that list. The check-in method of a car parking machine could use
+that list to know which JSON state files to check.
+
+Creating data reports in CSV format
+Create a program (carparkingreports.py) with the following menu structure:
+
+[P] Report all parked cars during a parking period for a specific parking machine input: car
+parking machine identifier, from date, to date (date format: DD-MM-YYYY). Input is comma separated.
+
+output: csv file example (semicolon separated):
+------------------------------------------------------------------------------------------
+license_plate;check-in;check-out;parking_fee
+2-ABC-09;09-21-2022 16:20:04;09-21-2022 17:20:30;5.00
+3-XYZ-10;09-21-2022 12:20:04;09-21-2022 18:45:11;18.00
+------------------------------------------------------------------------------------------
+
+[F] Report total collected parking fee during a parking period for all parking machines input: from date,
+to date (date format: DD-MM-YYYY) Input is comma separated. output: csv file example (semicolon separated):
+------------------------------------------------------------------------------------------
+car_parking_machine;total_parking_fee
+cpm_north;2,050
+cpm_south;180
+------------------------------------------------------------------------------------------
+[Q] Quit program
+
+The information for the reports is based on the information in the log file.

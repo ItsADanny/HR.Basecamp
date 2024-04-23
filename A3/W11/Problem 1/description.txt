@@ -1,0 +1,50 @@
+Create a program that can handle movie information from the movies.json file
+
+Movie information extra's:
+Implement a program that uses the data from movies.json, and shows the following information:
+* The number of movies released in 2004.
+* The number of movies in which the genre is Science Fiction.
+* All movies with actor Keanu Reeves.
+* All movies with actor Sylvester Stallone released between 1995 and 2005.
+
+Movie modification extra's:
+Using data from movies.json, make the following adjustments and write it back to the file:
+* Change the release year of the movie Gladiator from 2000 to 2001.
+* Set the release year of the oldest movie to one year earlier.
+* Actor Natalie Portman changed her name to Nat Portman. Adjust this for all movies she is in.
+* Actor Kevin Spacey got cancelled. Remove his name from all movies he is in.
+
+Default menu:
+------------------------------------------------------------------------------------------------------
+[I] Movie information overview
+[M] Make modification based on assignment
+[S] Search a movie title
+[C] Change title and/or release year by search on title
+[Q] Quit program
+------------------------------------------------------------------------------------------------------
+
+Input example (search):
+------------------------------------------------------------------------------------------------------
+S
+Bambi
+Q
+------------------------------------------------------------------------------------------------------
+
+Output example (search):
+------------------------------------------------------------------------------------------------------
+{'title': 'Bambi', 'year': 1942, 'cast': ['Bambi'], 'genres': ['Children','Action']}
+------------------------------------------------------------------------------------------------------
+
+Input example (modify):
+------------------------------------------------------------------------------------------------------
+C
+Bambi
+Bambi Remastered
+2023
+Q
+------------------------------------------------------------------------------------------------------
+
+Output example (modify):
+------------------------------------------------------------------------------------------------------
+{'title': 'Bambi Remastered', 'year': 2023, 'cast': ['Bambi'], 'genres': ['Children','Action']}
+------------------------------------------------------------------------------------------------------

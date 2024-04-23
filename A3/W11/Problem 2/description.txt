@@ -1,0 +1,82 @@
+Using data from bannedvideogames.csv, implement a program that allows the following:
+
+Game information extra's:
+Implement a program that shows the following information:
+
+* How many games got banned in Israel?
+* Which country got the most games banned?
+* How many games within the Assassin's Creed series are currently banned? Don't count duplicates banned in different countries.
+* Show all games (and the details) banned in Germany.
+* Show all countries (and the details) the game Red Dead Redemption got banned in.
+
+Game modification extra's:
+Implement a program that makes the following adjustments and write it back to the file:
+* Germany got a new law that accepts all games as a form of art. Remove all records with Germany from the file.
+* The game Silent Hill VI got renamed to Silent Hill Remastered, rename this in all corresponding records.
+* The ban on the game Bully in Brazil has been lifted. Change the status to Ban Lifted.
+* The game Manhunt II is banned by several countries. It is incorrectly listed as genre Stealth, change the genre to Action in all corresponding records.
+
+Add game extra's:
+You can use the following list for keys:
+------------------------------------------------------------------------------------------------------
+['id', 'name', 'series', 'country', 'details', 'category', 'status', 'wikipedia', 'image', 'summary',
+'developer', 'publisher', 'genre', 'homepage']
+------------------------------------------------------------------------------------------------------
+
+Default menu:
+------------------------------------------------------------------------------------------------------
+[I] Print request info from assignment
+[M] Make modification based on assignment
+[A] Add new game to list
+[O] Overview of banned games per country
+[S] Search the dataset by country
+[Q] Quit program
+------------------------------------------------------------------------------------------------------
+
+Input example (add):
+------------------------------------------------------------------------------------------------------
+A
+<id>
+<name>
+<series>
+<country>
+<details>
+<category>
+<status>
+<wikipedia>
+<image>
+<summary>
+<developer>
+<publisher>
+<genre>
+<homepage>
+Q
+------------------------------------------------------------------------------------------------------
+
+Input example (overview):
+------------------------------------------------------------------------------------------------------
+O
+Q
+------------------------------------------------------------------------------------------------------
+
+Output example (overview):
+------------------------------------------------------------------------------------------------------
+<country_name> - <amount_banned>
+- <game_name_1>
+- <game_name_2>
+...
+------------------------------------------------------------------------------------------------------
+
+Input example (search):
+------------------------------------------------------------------------------------------------------
+S
+Netherlands
+Q
+------------------------------------------------------------------------------------------------------
+
+Output example (search):
+------------------------------------------------------------------------------------------------------
+<game_name_1> - <game_details_1>
+<game_name_2> - <game_details_2>
+...
+------------------------------------------------------------------------------------------------------
