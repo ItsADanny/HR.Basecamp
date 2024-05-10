@@ -1,20 +1,35 @@
 # Import the required module
 import json
+
 movies_data = None
 
 
 # This function will import the movie's file into the program
 def import_movies():
-    movies_file = json.load(open('movies.json'))
-    return movies_file
+    # First, we open the file in READ mode
+    movie_file = open('movies.json', 'r')
+    # Second, we load the file in JSON
+    movie_file_json = json.load(movie_file)
+    # Third, we close the file
+    movie_file.close()
+    # Then we return the movie file
+    return movie_file_json
 
 
 # This function will save the movie data from the program
 # (This will also always be done when exiting the program)
 def save_movies_data(movies):
-    movies_file = open('movies.json', 'w')
-    movies_file.write(json.dumps(movies))
-    movies_file.close()
+    try:
+        # First, we open the movie file in WRITE mode
+        movies_file = open('movies.json', 'w')
+        # Second, we write our changes to the file
+        movies_file.write(json.dumps(movies))
+        # Then we close the file
+        movies_file.close()
+        # And return a True if succesfull
+        return True
+    except Exception as e:
+        return False
 
 
 # This function will display all the available movie information
