@@ -34,7 +34,6 @@ def load_csv_file(filename):
 # This function returns the headers from the file content
 def get_headers(file_content):
     headers = file_content[0]
-
     return headers
 
 
@@ -52,8 +51,8 @@ def get_directors(file_content):
 
 def program():
     # print_menu()
-    print(load_csv_file("netflix_titles.csv"))
-    print(get_headers(load_csv_file("netflix_titles.csv")))
+    # print(load_csv_file("netflix_titles.csv"))
+    # print(get_headers(load_csv_file("netflix_titles.csv")))
 
 
 if __name__ == "__main__":

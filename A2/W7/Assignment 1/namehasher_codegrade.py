@@ -222,74 +222,70 @@ def print_menu():
 
 
 def main():
+    con = True
     # First, we request a default key, Then we while first try and validate it.
     # If this can't be done, we are going to give an error message and request a valid one.
     # If the user doesn't provide one, we are going to use a predefined one
-    while True:
-        input_key = input("Key: ")
-        if input_key != "":
-            if len(input_key) / 2 != round(len(input_key) / 2):
-                print("Invalid hashvalue input")
-            else:
-                set_dict_key(input_key)
+    input_key = input("Key: ")
+    if input_key != "":
+        if len(input_key) / 2 != round(len(input_key) / 2):
+            con = False
+            print("Invalid hashvalue input")
+        else:
+            set_dict_key(input_key)
+    else:
+        set_dict_key(default_key)
+
+    if con:
+        while True:
+            print_menu()
+            input_menu_choice = input("Enter your choice: ").upper()
+            if input_menu_choice == "Q":
+                print("Exiting program, See you next time!")
                 break
-        else:
-            set_dict_key(default_key)
-            break
+            elif input_menu_choice == "E":
+                input_data = input("Enter a string for encoding: ")
 
-    while True:
-        print_menu()
-        input_menu_choice = input("Enter your choice: ").upper()
-        if input_menu_choice == "Q":
-            print("Exiting program, See you next time!")
-            break
-        elif input_menu_choice == "E":
-            input_data = input("Enter a string for encoding: ")
+                multi = False
+                # Detect if there are multiple values to be encoded (Separated by comma)
+                for char in input_data:
+                    if char == ",":
+                        multi = True
 
-            multi = False
-            # Detect if there are multiple values to be encoded (Separated by comma)
-            for char in input_data:
-                if char == ",":
-                    multi = True
+                if multi:
+                    list_input_data = input_data.replace(" ", "").split(",")
+                    print(encode_list(list_input_data))
+                else:
+                    print(encode_string(input_data))
 
-            if multi:
-                list_input_data = input_data.replace(" ", "").split(",")
-                print(encode_list(list_input_data))
+            elif input_menu_choice == "D":
+                input_data = input("Enter a string for decoding: ")
+
+                multi = False
+                # Detect if there are multiple values to be encoded (Separated by comma)
+                for char in input_data:
+                    if char == ",":
+                        multi = True
+
+                if multi:
+                    list_input_data = input_data.replace(" ", "").split(",")
+                    print(decode_list(list_input_data))
+                else:
+                    print(decode_string(input_data))
+
+            elif input_menu_choice == "P":
+                print("Encoded values:")
+                for i in encoded_values:
+                    print(i)
+                print("Decoded values:")
+                for i in decoded_values:
+                    print(i)
+            elif input_menu_choice == "V":
+                input_encoded_value = input("Enter an encoded string: ")
+                input_decoded_value = input("Enter an decoded string: ")
+                print(validate_values(input_encoded_value, input_decoded_value))
             else:
-                print(encode_string(input_data))
-
-        elif input_menu_choice == "D":
-            input_data = input("Enter a string for decoding: ")
-
-            multi = False
-            # Detect if there are multiple values to be encoded (Separated by comma)
-            for char in input_data:
-                if char == ",":
-                    multi = True
-
-            if multi:
-                list_input_data = input_data.replace(" ", "").split(",")
-                print(decode_list(list_input_data))
-            else:
-                print(decode_string(input_data))
-
-        elif input_menu_choice == "P":
-            print("Encoded values:")
-            pos_encoded_values = 1
-            for i in encoded_values:
-                print(f"{pos_encoded_values}: {i}")
-                pos_encoded_values += 1
-            print("Decoded values:")
-            pos_decoded_values = 1
-            for i in decoded_values:
-                print(f"{pos_decoded_values}: {i}")
-                pos_decoded_values += 1
-        elif input_menu_choice == "V":
-            input_encoded_value = input("Enter an encoded string: ")
-            input_decoded_value = input("Enter an decoded string: ")
-            print(validate_values(input_encoded_value, input_decoded_value))
-        else:
-            print("Invalid input, please select an option.")
+                print("Invalid input, please select an option.")
 
 
 # Create an unittest for both the encode and decode function (see test_namehasher.py file for boilerplate)
