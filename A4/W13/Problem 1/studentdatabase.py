@@ -58,7 +58,7 @@ def db_update_student(studentnumber, school_class):
         # Connect to the database
         con = db_connect()
         # Execute the query
-        rows_affected = con.execute(insert_query, [school_class, studentnumber]).fetchall()
+        rows_affected = con.execute(insert_query, [school_class, studentnumber])
         print(rows_affected)
         if len(rows_affected) > 0:
             # Commit the insert
