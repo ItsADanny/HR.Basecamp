@@ -1,0 +1,39 @@
+In this problem you are going to create a application to borrow and return books from a store/library
+
+Info:
+An existing dataset in JSON will be provided.
+The status of the books are in the database but the list of the books will be provided by JSON file.
+
+Extra:
+Initially, the program will check the content of JSON and compare it with the related table in the database.
+Then, missing elements must be inserted, the JSON file always has the latest update.
+After synchronising the file with the database, the program will have an interactive communication with the user.
+
+Default menu:
+
+[B] Borrow book
+[R] Return book
+[S] Search book
+[Q] Quit program
+
+Borrow book:
+
+Input: id or isbn and duration in days Extra: Should check if book is not borrowed at the moment
+
+statuses can be: AVAILABLE or BORROWED
+Output: date until this book can be borrowed
+
+calculate return_date based on (current_date + duration in days to borrow)
+Return book:
+
+Input: id or isbn Output: fine to pay (only if book is returned later then return date)
+
+0.50 EUR per day that book is returned later then return date
+example: you borrow a book @ 29-11-2022 for 14 days, return_date should be 13-12-2022
+if you return it later (say 14-12-2022 you should have to pay 1 day * 0.50 EUR)
+Search book:
+
+Input: searchterm Extra: should search in title, isbn or author Output: should return book information + status_information
+
+statusses can be: AVAILABLE or BORROWED
+example: {'id': 1, 'isbn': '1010101010', 'title': 'Some title', 'author': 'Some Author', 'pages': 111, 'year': '2022', 'status': 'AVAILABLE', 'return_date': None}

@@ -1,0 +1,117 @@
+In week 14 we started with creating a small piece of software for keeping track of student/course results.
+During our first evaluation we noticed that some output was not ideal for another system we need to work with.
+We are also missing some functionality in some classes. Now is the time to fix these problems.
+
+Extra:
+Use the files from week 14:
+Student > student.py
+Course > course.py
+Result > result.py
+ResultsManager > resultsmanager.py
+
+Class Student:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+We need to modify this class and add the following methods:
+
+def get_full_name(self) -> str:
+________________________________________________________________________________
+This method should return the full name (first_name + last_name)
+________________________________________________________________________________
+
+def get_age(self) -> int:
+________________________________________________________________________________
+This method should calculate the age of the student based on the current date.
+You can use date_of_birth to calculate this, return only whole years (floored)
+________________________________________________________________________________
+
+Class Course:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+No modification needed
+
+Class Result:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+No modification needed
+
+Class ResultsManager:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+We need to change some functionality on 2 methods within this class.
+
+Methods:
+---------------------------------------------------------------------------------------------------------
+def get_results_by_student(self, student_id, only_last=True):
+
+This method should grab all results from the database belonging to the given student_id,
+if only_last is False it should return all results for that student,
+if only_last is True (default) it should only return the highest mark per course for that student.
+It should return a list of dicts corresponding to the following example:
+======================================================================================================================================================
+[
+    {
+        "id": 1,
+        "name": "Development 101",
+        "points": 4,
+        "results": [
+            {"mark": 70, "achieved": "2023-08-15"},
+            {"mark": 50, "achieved": "2023-07-15"}, # only when only_last == False
+            ...
+        ]
+    }
+]
+======================================================================================================================================================
+
+def get_results_by_course(self, course_id, only_last=True):
+
+This method should grab all results from the database belonging to the given course_id,
+if only_last is False it should return all results for that course,
+if only_last is True (default) it should only return the highest mark per student for that course.
+It should return a list of dicts corresponding to the following example:
+======================================================================================================================================================
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "date_of_birth": "2006-02-02",
+        "results": [
+            {"mark": 70, "achieved": "2023-08-15"},
+            {"mark": 50, "achieved": "2023-07-15"},  # only when only_last == False
+            ...
+        ]
+    }
+]
+======================================================================================================================================================
+We also need to create an extra method:
+
+def get_remaining_students(self):
+
+This method should return a list of students that do not have 60 points yet.
+A student only should receive the points of a course if their mark is above or equal than 55 (5.5)
+The output should be a list of students with their results like so:
+======================================================================================================================================================
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "date_of_birth": "2006-02-02",
+        "total_points": 4,
+        "courses": [
+            {
+                "id": 1,
+                "name": "Development 101",
+                "points": 4,
+                "passed": True,
+                "mark": 70,
+                "achieved": "2023-08-15"
+            },
+            {
+                "id": 1,
+                "name": "Development 102",
+                "points": 4,
+                "passed": False,
+                "mark": 40,
+                "achieved": "2023-09-15"
+            },
+
+        ]
+    }
+]
+======================================================================================================================================================

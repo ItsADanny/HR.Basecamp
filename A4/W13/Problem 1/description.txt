@@ -1,0 +1,38 @@
+In this problem you are going to create an application to organise students and their info by class
+
+Extra:
+You can use the the provided code (see template) to connect with the database and create it if it does not exist.
+
+Default menu:
+
+[A] Add new student
+[C] Assign student to class
+[D] List all students
+[L] List all students in class
+[S] Search student
+[Q] Quit program
+
+Add new student:
+
+Input: first_name, last_name, city, date_of_birth (DD-MM-YYYY), class (optional)
+Output: return the assigned studentnumber (auto-created)
+
+Assign student to class:
+
+Input: studentnumber (primary_key), class
+Error (if student was not found): Could not find student with number: {studentnumber}
+
+List all students:
+
+Input: None
+Output: should be sorted based on class in descending order
+
+List all students in class:
+
+Input: class to search students in
+Output: should be sorted based on studentnumber in ascending order
+
+Search student:
+
+Input: searchterm and search in first_name, last_name or city
+Output: limit result to 1

@@ -1,0 +1,2 @@
+You already know how to implement a Python program that prints positive numbers less than n (non-recursively).
+Implement a recursive function named rec_print(n) that given a positive integer n prints all the positive numbers less than n.

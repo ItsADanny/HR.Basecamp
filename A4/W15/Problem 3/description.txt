@@ -1,0 +1,5 @@
+You already know how to check if a list contains an item or not.
+Assume we would like to implement such a function ourselves.
+Implement a recursive function that, given an element and a list,
+returns true if the list contains the element and false otherwise.
+It would be a good (and very simple) practice to implement a non-recursive one first.

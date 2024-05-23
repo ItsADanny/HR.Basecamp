@@ -1,0 +1,14 @@
+One of the ways to measure the performance of pieces of a code is to measure the time of the execution.
+
+Info:
+For example, the time is recorded at the beginning and at the end of a function.
+Then, the execution time can be calculated.
+A desirable implementation is to not change the body of an already implemented function.
+A decorator can be helpful here. \
+
+Extra:
+Make use of the time import for calculating the difference in time.
+
+Implementation:
+Suppose you have an already implemented function.
+Decorate your function such that its execution time is printed when running it.

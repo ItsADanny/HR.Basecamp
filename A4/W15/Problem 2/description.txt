@@ -1,0 +1,4 @@
+Implement two functions, one for non-recursive and one recursive,
+that calculate the result of multiplication of positive numbers less than or equal given n.
+For example, given n=5, the result will be 120 (because 5*4*3*2*1=120).
+Note: In mathematics this is called calculating n-factorial.

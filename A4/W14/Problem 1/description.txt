@@ -1,0 +1,16 @@
+Create a program that sorts a list of strings.
+Depending on the purpose of the sorting, the criteria of sorting can be different: alphabetically based on the first letter, length of the string, etc.
+Use the code template below and implement sorting based on the number of vowels (descending) within a string.
+For example, fall will occur before free.
+
+
+def get_num_of_vowels(inp:str)->int:
+    vowel_count = 0
+    # todo: implement the body of the function
+    return vowel_count
+
+def sort_basedon_vowels():
+    cases = ['code','programming','description','fly','free']
+    print(sorted(cases)) # todo: fix the call of the function
+
+sort_basedon_vowels()
