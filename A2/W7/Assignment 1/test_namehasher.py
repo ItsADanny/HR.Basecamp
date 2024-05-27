@@ -1,4 +1,4 @@
-from namehasher_tmppy import set_dict_key, encode_string, decode_string, encode_list, decode_list, validate_values
+from namehasher import set_dict_key, encode_string, decode_string, encode_list, decode_list, validate_values
 
 
 def test_encode_string():

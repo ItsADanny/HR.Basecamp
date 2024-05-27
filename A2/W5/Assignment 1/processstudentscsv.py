@@ -1,152 +1,155 @@
 # Import the required modules
-import csv
+import os
+import sys
+
+# Create two lists that will store our valid and invalid lines
+valid_lines = []
+corrupt_lines = []
+
+# Create a list with all the allowed studies
+allowed_studies = ["INF", "TINF", "CMD", "AI"]
 
 
-def validate_data(value):
-    state = True
-
-    if value == "" or value is None:
-        state = False
-
-    return state
-
-
+# This function checks if the student number is valid
 def studentnumber_check(studentnumber):
-    state = False
+    # Predefine our return value
+    return_value = False
 
-    if studentnumber.isnumeric():
-        if len(studentnumber) == 7:
-            if studentnumber[0] == "0":
-                if studentnumber[1] == "8" or studentnumber[1] == "9":
-                    state = True
+    # Preform the check to see if it is 7 long
+    if len(studentnumber) == 7:
+        # Preform the check to see if it starts with a 0
+        if studentnumber[0] == "0":
+            # Preform the check to see if it's second character is a 9 or 8
+            if studentnumber[1] == "9" or studentnumber[1] == "8":
+                return_value = True
 
-    return state
-
-
-def name_check(name):
-    state = False
-
-    if name.isalpha():
-        state = True
-
-    return state
+    # Return the result
+    return return_value
 
 
-def dateofbirth_check(dateofbirth):
-    state = False
+# This function checks if the name is valid
+def studentname_check(name):
+    # Predefine our return value
+    return_value = False
 
-    valid_format = True
-    valid_year = False
-    valid_month = False
-    valid_day = False
+    # Preform the check to see if it is only alpha characters (with spaces remove ofcourse)
+    if name.replace(" ", "").isalpha():
+        return_value = True
 
-    string_year = dateofbirth[0:4]
-    string_month = dateofbirth[5:7]
-    string_day = dateofbirth[8:10]
-
-    for e in string_year:
-        if valid_format:
-            if e == "-":
-                valid_format = False
-
-    int_year = int(string_year)
-    int_month = int(string_month)
-    int_day = int(string_day)
-
-    if 1960 <= int_year <= 2004:
-        valid_year = True
-
-    if 1 <= int_month <= 12:
-        valid_month = True
-
-    if 1 <= int_day <= 31:
-        valid_day = True
-
-    if valid_year and valid_month and valid_day:
-        state = True
-
-    return state
+    # Return the result
+    return return_value
 
 
-def studyprogram_check(studyprogram):
-    state = False
+# This function checks if the date of birth is valid
+def studentbirthdate_check(date):
+    # Predefine our return value
+    return_value = False
 
-    if studyprogram == "INF" or studyprogram == "TINF" or studyprogram == "CMD" or studyprogram == "AI":
-        state = True
+    # Preform a check to see if the right date format has been used
+    if date[4] == "-" and date[7] == "-":
+        # split the
+        splitted_date = date.split("-")
 
-    return state
+        # Create a valid_parts integer which will start at 0 to see if all parts are valid
+        valid_parts = 0
+
+        # Year check
+        # ------------------------------------
+        # check to see if the number is 4 long and if its numeric
+        if len(splitted_date[0]) == 4 and splitted_date[0].isnumeric():
+            # Check to see if the year is between 1960 and 2004
+            if 1960 <= int(splitted_date[0]) <= 2004:
+                valid_parts += 1
+
+        # Month check
+        # ------------------------------------
+        # check to see if the number is 2 long and if its numeric
+        if len(splitted_date[1]) == 2 and splitted_date[1].isnumeric():
+            # Check to see if the month is between the 1 and 12:
+            if 1 <= int(splitted_date[1]) <= 12:
+                valid_parts += 1
+
+        # Day check
+        # ------------------------------------
+        # check to see if the number between the 1 and 2 long and if its numeric
+        if 1 <= len(splitted_date[1]) <= 2 and splitted_date[2].isnumeric():
+            # Check to see if the day is between the 1 and 12:
+            if 1 <= int(splitted_date[2]) <= 31:
+                valid_parts += 1
+
+        # Check to see if al parts were valid integers
+        if valid_parts == 3:
+            return_value = True
+
+    # Return the result
+    return return_value
 
 
-# Open the extenal CSV file
-file_studentcsv = open('students.csv')
+# This function will check the student's study program
+def studentstudyprogram_check(study):
+    # Predefine our return value
+    return_value = False
 
-# Read the CSV file with the CSV Reader
-csvreader_studentcsv = csv.reader(file_studentcsv)
+    # Check if the study is one of the allowed studies
+    for allowed_study in allowed_studies:
+        # Check if the study matches one of the allowed studies
+        if allowed_study == study:
+            # Update the return value if so
+            return_value = True
 
-# Create a list variable that will hold all the csv rows
-list_studentcsv = []
+    # Return the result
+    return return_value
 
-# preform a for-loop over the csvreader and store the csv rows in the list_studentcsv variable
-for row in csvreader_studentcsv:
-    list_studentcsv.append(row)
 
-# After retrieving the required data, we close the CSV file
-file_studentcsv.close()
+def validate_data(line):
+    # Make it possible to use the global lists
+    global corrupt_lines, valid_lines
 
-# Now that we have the data, we are going to preform some checks to see which rows are correct and which weren't
-# To show which lines were correct and which weren't, we are going to need 2 new list variables
-list_correct = []
-list_incorrect = []
+    # We split the line into its seperate parts
+    split_line = line.split(",")
+    # Retrieve the data from our list which contains all the data line seperated
+    student_studentnumber = split_line[0]
+    student_firstname = split_line[1]
+    student_lastname = split_line[2]
+    student_birthdate = split_line[3]
+    student_studyprogram = split_line[4]
 
-# Loop through the list_studentcsv and preform the checks to see if the lines are valid or invalid
-for student in list_studentcsv:
-    try:
-        student_studentnumber = student[0]
-        student_firstname = student[1]
-        student_lastname = student[2]
-        student_birthday = student[3]
-        student_studyprogram = student[4]
+    # Create a list in which we will store the invalid parts
+    # (This will also be used to check if it's a fully valid line later.)
+    invalid_parts = list()
 
-        nocorr_studentnumber = validate_data(student_studentnumber)
-        nocorr_firstname = validate_data(student_firstname)
-        nocorr_lastname = validate_data(student_lastname)
-        nocorr_birthday = validate_data(student_birthday)
-        nocorr_studyprogram = validate_data(student_studyprogram)
+    # Check the data from the line
+    # If a parts invalid. Add it to the list with invalid parts for that line
+    if not studentnumber_check(student_studentnumber):
+        invalid_parts += [f"{student_studentnumber}"]
+    if not studentname_check(student_firstname):
+        invalid_parts += [f"{student_firstname}"]
+    if not studentname_check(student_lastname):
+        invalid_parts += [f"{student_lastname}"]
+    if not studentbirthdate_check(student_birthdate):
+        invalid_parts += [f"{student_birthdate}"]
+    if not studentstudyprogram_check(student_studyprogram):
+        invalid_parts += [f"{student_studyprogram}"]
 
-        if nocorr_studentnumber and nocorr_firstname and nocorr_lastname and nocorr_birthday and nocorr_studyprogram:
-            valid_studentnumber = studentnumber_check(student_studentnumber)
-            valid_firstname = name_check(student_firstname)
-            valid_lastname = name_check(student_lastname)
-            valid_birthday = dateofbirth_check(student_birthday)
-            valid_studyprogram = studyprogram_check(student_studyprogram)
+    if len(invalid_parts) > 0:
+        corrupt_lines.append(f"{line} => INVALID DATA: {invalid_parts}")
+    else:
+        valid_lines.append(line)
 
-            if valid_studentnumber and valid_firstname and valid_lastname and valid_birthday and valid_studyprogram:
-                list_correct.append(student)
-            else:
-                invalid_parts = []
-                if not valid_studentnumber:
-                    invalid_parts.append(student_studentnumber)
-                if not valid_firstname:
-                    invalid_parts.append(student_firstname)
-                if not valid_lastname:
-                    invalid_parts.append(student_lastname)
-                if not valid_birthday:
-                    invalid_parts.append(student_birthday)
-                if not valid_studyprogram:
-                    invalid_parts.append(student_studyprogram)
 
-                student.append(invalid_parts)
+def main(csv_file):
+    with open(os.path.join(sys.path[0], csv_file), newline='') as csv_file:
+        # skip header line
+        next(csv_file)
 
-                list_incorrect.append(student)
-        else:
-            list_incorrect.append(student)
-    except NameError:
-        list_incorrect.append(student)
+        for line in csv_file:
+            validate_data(line.strip())
 
-# After preforming the loop, print the final results
-print("### VALID LINES ###")
-for i in list_correct:
-    print(f"{i[0]},{i[1]},{i[2]},{i[3]},{i[4]}")
-print("### CORRUPT LINES ###")
-for i in list_incorrect:
-    print(f"{i[0]},{i[1]},{i[2]},{i[3]},{i[4]} => INVALID DATA: {i[5]}")
+    print('### VALID LINES ###')
+    print("\n".join(valid_lines))
+    print('### CORRUPT LINES ###')
+    print("\n".join(corrupt_lines))
+
+
+if __name__ == "__main__":
+    main('students.csv')
