@@ -20,6 +20,7 @@ def calculate_fare(distance):
     return total_fare
 
 
-# Request an input from the user and then print the results from the function
-input_kilometers = input("Distance traveled: ")
-print(f"Total fare: {round(calculate_fare(float(input_kilometers)), 2)}")
+if __name__ == '__main__':
+    # Request an input from the user and then print the results from the function
+    input_kilometers = input("Distance traveled: ")
+    print(f"Total fare: {round(calculate_fare(float(input_kilometers)), 2)}")

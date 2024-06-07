@@ -44,30 +44,31 @@ def check_triangle(side_a, side_b, side_c):
         return False
 
 
-# Preform a while loop that only stops when 3 items have been inputted and have been stored into the list
-while len(input_straw_list) != 3:
-    # Set the response to 0 and the valid_response to False
-    user_response = 0
-    valid_response = False
-    # While to response is not valid preform this loop
-    while not valid_response:
-        # Request a number from the user for a certain side
-        input_straw = input(f"Side {sides[pos]}: ")
-        # Check if the number is numeric, If not give an error message, else turn the input into a string,
-        # set user_response to this number and turn valid_response to True
-        if input_straw.isnumeric():
-            user_response = int(input_straw)
-            valid_response = True
-        else:
-            print(f"Invalid input, please enter a valid number for side {sides[pos]}")
-    # Add the number to the list
-    input_straw_list += [user_response]
-    # Move the position
-    pos += 1
+if __name__ == "__main__":
+    # Preform a while loop that only stops when 3 items have been inputted and have been stored into the list
+    while len(input_straw_list) != 3:
+        # Set the response to 0 and the valid_response to False
+        user_response = 0
+        valid_response = False
+        # While to response is not valid preform this loop
+        while not valid_response:
+            # Request a number from the user for a certain side
+            input_straw = input(f"Side {sides[pos]}: ")
+            # Check if the number is numeric, If not give an error message, else turn the input into a string,
+            # set user_response to this number and turn valid_response to True
+            if input_straw.isnumeric():
+                user_response = int(input_straw)
+                valid_response = True
+            else:
+                print(f"Invalid input, please enter a valid number for side {sides[pos]}")
+        # Add the number to the list
+        input_straw_list += [user_response]
+        # Move the position
+        pos += 1
 
-# Preform the function in an if-else statement and print if its possible triangle
-# or an impossible triangle after getting the results from the function
-if check_triangle(input_straw_list[0], input_straw_list[1], input_straw_list[2]):
-    print("Possible triangle")
-else:
-    print("Impossible triangle")
+    # Preform the function in an if-else statement and print if its possible triangle
+    # or an impossible triangle after getting the results from the function
+    if check_triangle(input_straw_list[0], input_straw_list[1], input_straw_list[2]):
+        print("Possible triangle")
+    else:
+        print("Impossible triangle")

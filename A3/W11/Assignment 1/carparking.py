@@ -1,5 +1,7 @@
 from datetime import datetime
 from math import ceil
+import json
+import os
 # ParkedCar class to store information of parked cars.
 
 
@@ -25,21 +27,35 @@ class CarParkingMachine:
         self.parked_cars = parked_cars
         self.machinelogger = CarParkingLogger(id)
 
+        json_exists = self.does_cpm_json_exist()
+        if json_exists:
+            self.load_instances_from_json()
+
     # This function can be used when checking in a car,
     # This function returns a True or False based on if the parking garage is full or not
     def check_in(self, license_plate: str, checkin_datetime=datetime.now()) -> bool:
-        # First we if the parking garage isn't at max capacity
-        if len(self.parked_cars) < self.capacity:
-            # Then we create a ParkedCar instance with the license plate and datetime.now()
-            car = ParkedCar(license_plate, checkin_datetime)
-            # We then add the ParkedCar instance to our ParkedCars dict with our license plate as its Key
-            self.parked_cars.update({license_plate: car})
-            # Log a new line
-            self.machinelogger.log_newline(license_plate, "check-in")
-            # If the car could be "Parked" "successfully" return a True
-            return True
-        # Return a False if the parking garage is full
-        return False
+        if not self.is_car_parked_already(license_plate):
+            # First we if the parking garage isn't at max capacity
+            if len(self.parked_cars) < self.capacity:
+                # Insert the cars basic information into the JSON file
+                if self.json_insert_parkedcar(license_plate, checkin_datetime):
+                    # Then we create a ParkedCar instance with the license plate and datetime.now()
+                    car = ParkedCar(license_plate, checkin_datetime)
+                    # We then add the ParkedCar instance to our ParkedCars dict with our license plate as its Key
+                    self.parked_cars.update({license_plate: car})
+                    # Log a new line
+                    self.machinelogger.log_newline(license_plate, "check-in")
+                    # If the car could be "Parked" "successfully" return a True
+                    return True
+                # Return a false if an error occurs when we try to save our parked car to the JSON file
+                else:
+                    return False
+            # Return a False if the parking garage is full
+            else:
+                return False
+        # Return a False if the car can't be parked because it is already parked in another garage
+        else:
+            return False
 
     # This function can be used when checking out a car,
     # This function returns a float that contains the Parking fee that needs to be paid
@@ -50,6 +66,8 @@ class CarParkingMachine:
         self.machinelogger.log_newline(license_plate, "check-out", parking_fee)
         # Remove the car from our dict
         self.parked_cars.pop(license_plate)
+        # Remove the car from our cpm's JSON file
+        self.json_delete_parkedcar(license_plate)
         # Return the parking fee
         return parking_fee
 
@@ -66,6 +84,136 @@ class CarParkingMachine:
         parking_fee = round(min(parking_time, 24) * self.hourly_rate, 2)
         # Return the results
         return parking_fee
+
+    # This function will search the folder in which the script is
+    # running for the json file associated with this cpm
+    def does_cpm_json_exist(self):
+        # Put a try-except around it to handle a FileNotFoundError if the file isn't in the folder
+        try:
+            file = open(f'{self.machine_id}.json')
+            file.close()
+            return True
+        except FileNotFoundError:
+            return False
+
+    # This function loads the parkedcar instances from the JSON file
+    # whenever the cpm restarts and detects it has an associated JSON file
+    def load_instances_from_json(self):
+        # Open the file (in READ-ONLY mode)
+        file = open(f'{self.machine_id}.json', 'r')
+        # load the JSON data from the file
+        json_data = json.load(file)
+        # close the file
+        file.close()
+
+        # Iterate through the rows of the JSON data
+        for row in json_data:
+            # Create an instance of the ParkedCar class with the required data
+            parked_car = ParkedCar(row['license_plate'], datetime.strptime(row["check_in"], "%m-%d-%Y %H:%M:%S"))
+            # Add the instance to the parked_cars variable of our cpm
+            self.parked_cars[row['license_plate']] = parked_car
+
+    # This function checks if the car isn't already parked in another garage
+    def is_car_parked_already(self, license_plate: str) -> bool:
+        # Declare the return value and set it as False by default
+        return_value = False
+        # Loop through the files in the directory in which this script is run
+        for file in os.listdir():
+            # If we find a file that ends with ".json" and isn't a file for this cpm then we open the file
+            # and see if the car is already parked in another garage
+            if file.endswith(".json") and file != f"{self.machine_id}.json":
+                # Open the file
+                file = open(file, 'r')
+                # Load the JSON data
+                json_data = json.load(file)
+                # Close the file
+                file.close()
+
+                # Iterate through the cars in the file
+                for car in json_data:
+                    # If the license plate is the same as the car we are currently
+                    # checking for, then set the return value to True
+                    if license_plate == car['license_plate']:
+                        return_value = True
+
+        # Return the result
+        return return_value
+
+    # This function inserts a parkedcar into the cpm's associated JSON file
+    def json_insert_parkedcar(self, license_plate: str, checkin_datetime: datetime):
+        # Put a try-except around it the handle the errors
+        try:
+            # Check to see if a JSON file already exists
+            # If it does, We can safely load its data to add up on.
+            # If not, Then we don't load any data and just insert our car in a new JSON file
+            if self.does_cpm_json_exist():
+                # Open the file in READ/WRITE mode
+                file = open(f'{self.machine_id}.json', 'r+')
+                # Load the JSON data
+                json_data = json.load(file)
+            else:
+                # Create the file in WRITE mode
+                file = open(f'{self.machine_id}.json', 'w')
+                # write into the file two brackets to make it a valid JSON
+                file.write("[]")
+                # Close the file
+                file.close()
+                # Reopen the file in READ/WRITE mode
+                file = open(f'{self.machine_id}.json', 'r+')
+                # Load the file as JSON data
+                json_data = json.load(file)
+
+            # Append to the JSON data our new parked car instance
+            json_data.append({"license_plate": license_plate,
+                              "check_in": checkin_datetime.strftime("%m-%d-%Y %H:%M:%S")})
+            # Seek position 0
+            file.seek(0)
+            # Dump the json_data into the JSON file (with an indent of 4)
+            json.dump(json_data, file, indent=4)
+            # Close the file
+            file.close()
+
+            # Return a True on success
+            return True
+        except FileNotFoundError:
+            return False
+
+    # This function deletes a parkedcar from our cpm's associated JSON file
+    def json_delete_parkedcar(self, license_plate: str):
+        # Put a try-except around it the handle the errors
+        try:
+            # First, we retrieve all the data from the JSON file
+            # Open the file
+            file = open(f"{self.machine_id}.json", "r")
+            # Load the JSON data
+            json_data = json.load(file)
+            # Close the file
+            file.close()
+
+            # Second, we remove the instance of our parked car from the data
+            # Create a list in which we will store our new json data without the parked car instance
+            new_json_data = list()
+            # Iterate through the current json_data
+            for car in json_data:
+                # If we detect, the current car's license plate is different from the car we want to remove.
+                # Then we add that car data to our new_json_data list
+                if license_plate != car['license_plate']:
+                    new_json_data.append(car)
+
+            # Third, We write our new data to the file
+            # Open the file in WRITE mode
+            file = open(f"{self.machine_id}.json", "w")
+            # Seek position 0
+            file.seek(0)
+            # JSON dump the information into the file with a indent of 4
+            json.dump(new_json_data, file, indent=4)
+            # Close the file
+            file.close()
+
+            # Return a True on succesfull completion
+            return True
+        except FileNotFoundError:
+            return False
 
 
 class CarParkingLogger:
@@ -155,7 +303,10 @@ def main():
             if parking_machine.check_in(input_user_license_plate):
                 print("license registered")
             else:
-                print("Capacity reached")
+                if len(parking_machine.parked_cars) >= 10:
+                    print("Capacity reached")
+                else:
+                    print("An error has occured while trying to park the car")
         elif input_user == "o":
             input_user_license_plate = input("Please enter your license plate number: ")
             parking_fee_result = parking_machine.check_out(input_user_license_plate)
