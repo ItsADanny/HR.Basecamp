@@ -1,16 +1,25 @@
 def rec_print_folders(n: int, pref: str, root: list) -> None:
-    '''
-    This function prints the contents of a given root folder with indentations.
-    '''
-	# todo: implement the body of this function
+    pass
+
 
 def rec_count_files(root: list) -> int:
-	'''
-	The functions counts number of files in a given folder (and all its sub-folders).
-	:param root: A nested list: an element either is a file (name) or a list as a sub-folder.
-	:return:
-	'''
-	# todo: implement the body of this function
+    # Create a variable in which we will store our found files amount
+    total_files_found = 0
+    # Loop through the root
+    for item in root:
+        # Check if the instance is a list or a string
+        if isinstance(item, list):
+            # If it is a list, then rerun this function with the list as its argument
+            total_files_found += rec_count_files(item)
+        # If it is a file, then add 1
+        elif isinstance(item, str):
+            total_files_found += 1
+        # Do nothing if it is anything else
+        else:
+            pass
+
+    # Return the files found amount
+    return total_files_found
 
 
 if __name__ == "__main__":

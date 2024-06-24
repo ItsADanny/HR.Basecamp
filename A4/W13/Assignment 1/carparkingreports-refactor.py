@@ -31,7 +31,7 @@ def sql_get_allparking(machine: str) -> list:
     # Connect to the database
     db_connection = sqlite3.connect(os.path.join(sys.path[0], sqlite_database_filename))
     # Prepare the query
-    query = "SELECT check_in, car_parking_machine, parking_fee FROM parkings WHERE car_parking_machine = ?"
+    query = "SELECT check_in, check_out, car_parking_machine, parking_fee FROM parkings WHERE car_parking_machine = ? AND parking_fee != 0"
     # Execute the query and retrieve the results
     results = db_connection.execute(query, [machine])
     # Iterate through the results
@@ -88,7 +88,10 @@ def gen_report_allcars_date_machine(machine: str, from_date: str, to_date: str) 
 
     # Iterate through the data and filter out the data that is not between the two given dates
     for row in data:
-
+        check_in, car_parking_machine, parking_fee
+        row_checkin = row[0]
+        row_carparking_machine = row[1]
+        row_parkingfee = row[2]
 
     # Create a unique filename that will be used when we generate our report
     report_name = f"{datetime.now().strftime("%d%m%Y%H%M%S")}-carparkingactivities.csv"

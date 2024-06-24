@@ -3,6 +3,7 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/A4/Extras/examples/databases/databases-simple-orderby.py" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/A4/Extras/examples/databases/databases-simple-select.py" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/A4/W13/Assignment 1/carparking.py" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/A4/W13/Assignment 1/carparkingreports-refactor.py" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/A4/W13/Problem 1/studentdatabase.py" dialect="SQLite" />
   </component>
